@@ -1,0 +1,16 @@
+# Docker
+*.log
+*.pid
+*.db
+
+# Node modules
+app/node_modules/
+
+# Composer
+app/vendor/
+
+# .env files
+.env
+
+# Inne
+.DS_Store
