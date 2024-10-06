@@ -21,15 +21,17 @@ WheelsHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzo
 
     ```
 
-2.  Zbuduj i uruchom kontenery Docker:
+2.  Wykonaj mpm i w katalogu app
+
+3.  Zbuduj i uruchom kontenery Docker:
 
     ```bash
         docker-compose up --build
     ```
 
-3.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
+4.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
 
-4.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
+5.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
 
     Struktura projektu
     • app/ – Aplikacja i backend (AngularJS, PHP, Laminas)

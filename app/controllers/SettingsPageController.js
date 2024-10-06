@@ -1,4 +1,4 @@
-wheelHubApp.controller('HomePageController', [
+wheelHubApp.controller('SettingsPageController', [
 	'$scope',
 	function ($scope) {
 		$scope = $scope

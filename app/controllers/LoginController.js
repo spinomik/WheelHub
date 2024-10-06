@@ -1,4 +1,4 @@
-wheelHubApp.controller('HomePageController', [
+wheelHubApp.controller('LoginController', [
 	'$scope',
 	function ($scope) {
 		$scope = $scope

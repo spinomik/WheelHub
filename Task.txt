@@ -1,32 +1,46 @@
 Baza wypożyczalni samochodowej (AngularJS + PHP + MySQL)
-Przygotować kod prostej aplikacji webowej według opisu poniżej, rozwiązanie przesłać w
-formie udostępnionego publicznego repozytorium GIT .
-Frontend: AngularJS (v1), AngularJS Material
-https://angularjs.org
-https://material.angularjs.org/latest/
+
+Przygotować kod prostej aplikacji webowej według opisu poniżej, 
+rozwiązanie przesłać wformie udostępnionego publicznego repozytorium GIT .
+
+Frontend: 
+    -AngularJS (v1)[https://angularjs.org], 
+    -AngularJS Material [https://material.angularjs.org/latest/]
+
 Użytkownik ma możliwość przeglądania, dodawania, edycji i usuwania pojazdów.
 Budowanie mechanizmów logowania nie jest wymagane.
 Użyć komponentów biblioteki AngularJS Material do list i formularzy
-Pojazd powinien posiadać takie informacje jak markę pojazdu, numer rejestracyjny, vin,
-email klienta, adres klienta, jeśli jest aktualnie w wypożyczeniu, adres aktualnej pozycji
-pojazdu (tylko do odczytu - aktualizowany przez system).
+Pojazd powinien posiadać takie informacje jak 
+    - markę pojazdu, 
+    - numer rejestracyjny, 
+    - vin,
+    - email klienta, 
+    - adres klienta, 
+    - jeśli jest aktualnie w wypożyczeniu, adres aktualnej pozycji pojazdu (tylko do odczytu - aktualizowany przez system).
 Widoki frontu:
 1. Lista pojazdów (dowolna forma prezentacji):
-- adres jako komponent lub dyrektywa
-- usuwanie z potwierdzeniem
-- akcja przejścia do edycji
+    - adres jako komponent lub dyrektywa
+    - usuwanie z potwierdzeniem
+    - akcja przejścia do edycji
 2. Formularz dodawania pojazdu:
-- podstawowe walidacje z komunikatami
-- adres jako komponent lub dyrektywa
+    - podstawowe walidacje z komunikatami
+    - adres jako komponent lub dyrektywa
 3. Formularz edycji pojazdu - ten sam formularz co przy dodawaniu
-Backend: PHP , MySQL, Doctrine, Framework: Zend Framework 2, Laminas lub Symfony
-• przygotuj potrzebne moduły do obsługi bazy pojazdów (w tym listę marek pojazdów),
-• weryfikuj przychodzące dane z formularzy,
-• dane adresowe mogą być wykorzystywane przyszłościowo w innych modułach.
+
+Backend: 
+    - PHP Framework:
+        •  Zend Framework 2, 
+        •  Laminas 
+        •  Symfony
+    - MySQL, 
+    - Doctrines
+1. przygotuj potrzebne moduły do obsługi bazy pojazdów (w tym listę marek pojazdów),
+2. weryfikuj przychodzące dane z formularzy,
+3. dane adresowe mogą być wykorzystywane przyszłościowo w innych modułach.
 Mile widziane:
-• Docker dla backendu,
-• prosta obsługa błędu w przypadku próby pobrania listy pojazdów bez dostępu do
-internetu (przycisk powtórzenia zapytania),
-• swagger (wystarczą proste dekoratory tylko na potrzeby tes^ngu API),
-• dbałość o czytelność commitów,
-• readme z instrukcją uruchomienia.
+1. Docker dla backendu,
+2. prosta obsługa błędu w przypadku próby pobrania listy pojazdów bez dostępu do
+    internetu (przycisk powtórzenia zapytania),
+3. swagger (wystarczą proste dekoratory tylko na potrzeby testingu API),
+4. dbałość o czytelność commitów,
+5. readme z instrukcją uruchomienia.

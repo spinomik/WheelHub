@@ -4,6 +4,7 @@ wheelHubApp.directive('container', [
 			restrict: 'E',
 			scope: {
 				showSidenav: '=',
+				user: '=',
 			},
 			controller: function ($scope) {},
 			templateUrl: '/components/container/container.html',

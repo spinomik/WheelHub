@@ -1,10 +1,29 @@
 <md-sidenav class="md-sidenav-4dp" md-is-locked-open="showSidenav" flex="none">
-    <md-list>
+    <md-list ng-if="user.username != null">
         <md-list-item>
-            <md-button>TEST 1</md-button>
+            <md-button ng-href="#!/homePage">Moje Wynajmy</md-button>
         </md-list-item>
         <md-list-item>
-            <md-button>TEST 2</md-button>
+            <md-button ng-href="#!/homePage">Wynajmij</md-button>
+        </md-list-item>
+        <!-- For admin -->
+        <md-list-item ng-show="user.userRole">
+            <md-button ng-href="#!/carsList" ng-click="!showSidenav">Lista Pojazdów</md-button>
+        </md-list-item>
+        <!-- For admin -->
+        <md-list-item ng-show="user.userRole">
+            <md-button ng-href="#!/homePage">Terminarz</md-button>
+        </md-list-item>
+        <md-list-item>
+            <md-button ng-href="#!/settings">Ustawienia konta</md-button>
+        </md-list-item>
+    </md-list>
+    <md-list ng-if="user.username == null">
+        <md-list-item>
+            <md-button ng-href="#!/login">Zaloguj</md-button>
+        </md-list-item>
+        <md-list-item>
+            <md-button ng-href="#!/register">Zarejestruj</md-button>
         </md-list-item>
     </md-list>
 </md-sidenav>

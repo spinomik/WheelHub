@@ -13,6 +13,10 @@ $scripts = [
     // Controllers 
     '/controllers/HomePageController.js',
     '/controllers/WheelHubController.js',
+    '/controllers/CarsListController.js',
+    '/controllers/SettingsPageController.js',
+    '/controllers/LoginController.js',
+    '/controllers/RegisterController.js',
     // Components
     '/components/container/container.directive.js',
     '/components/content/content.directive.js',

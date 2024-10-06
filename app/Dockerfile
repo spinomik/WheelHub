@@ -1,3 +1,6 @@
+# FIXME: poprawić dockerfile(nie instaluje zaleznosci)
+# TODO: dodac do dockera git clone
+
 # Używamy obrazu PHP z Apache
 FROM php:8.1-apache
 
@@ -21,11 +24,17 @@ WORKDIR /var/www/html
 # Instalacja Laminas
 RUN composer create-project laminas/laminas-mvc-skeleton .
 
-# Instalacja AngularJS i dodatkowych modułów
-RUN npm install angular@1.8.2 angular-material angular-route angular-animate angular-aria
-
 # Kopiowanie aplikacji do kontenera
 COPY . /var/www/html
+
+# Przypisujemy folder roboczy
+WORKDIR /var/www/html/app
+
+# Zainstaluj zależności z package.json
+RUN npm install
+
+# Przypisujemy folder roboczy
+WORKDIR /var/www/html
 
 # Kopiowanie konfiguracji Apache
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
