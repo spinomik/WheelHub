@@ -11,12 +11,17 @@ $scripts = [
     // Config
     '/config/wheelHub.config.js',
     // Controllers 
-    '/controllers/HomePageController.js',
     '/controllers/WheelHubController.js',
+    '/controllers/HomePageController.js',
     '/controllers/CarsListController.js',
     '/controllers/SettingsPageController.js',
     '/controllers/LoginController.js',
     '/controllers/RegisterController.js',
+    '/controllers/CalendarController.js',
+    '/controllers/MyRentsController.js',
+    '/controllers/RentCarController.js',
+    // Services
+    'services/AuthServices.js',
     // Components
     '/components/container/container.directive.js',
     '/components/content/content.directive.js',

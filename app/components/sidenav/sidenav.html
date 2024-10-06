@@ -1,29 +1,49 @@
 <md-sidenav class="md-sidenav-4dp" md-is-locked-open="showSidenav" flex="none">
     <md-list ng-if="user.username != null">
         <md-list-item>
-            <md-button ng-href="#!/homePage">Moje Wynajmy</md-button>
+            <md-card class="userCard">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{user.username}}</span>
+                        <span class="md-subhead">{{user.firstName}} {{user.lastName}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-href="#!/settings" ng-show="activePage !='settings'">
+                        Ustawienia</md-button>
+                    <md-button ng-href="#!/logout">Wyloguj</md-button>
+                </md-card-actions>
+            </md-card>
         </md-list-item>
-        <md-list-item>
-            <md-button ng-href="#!/homePage">Wynajmij</md-button>
+        <md-list-item ng-show="activePage !='home'">
+            <md-button ng-href="#!/home">Strona główna</md-button>
+        </md-list-item>
+        <md-list-item ng-class="{'active-link': activePage === 'my-rents'}">
+            <md-button ng-href="#!/my-rents">Moje Wynajmy</md-button>
+        </md-list-item>
+        <md-list-item ng-class="{'active-link': activePage === 'rent-car'}">
+            <md-button ng-href="#!/rent-car">Wynajmij</md-button>
         </md-list-item>
         <!-- For admin -->
         <md-list-item ng-show="user.userRole">
-            <md-button ng-href="#!/carsList" ng-click="!showSidenav">Lista Pojazdów</md-button>
+            <md-button ng-href="#!/cars-list" ng-click="!showSidenav"
+                ng-class="{'active-link': activePage === 'cars-list'}">Lista Pojazdów</md-button>
         </md-list-item>
         <!-- For admin -->
         <md-list-item ng-show="user.userRole">
-            <md-button ng-href="#!/homePage">Terminarz</md-button>
-        </md-list-item>
-        <md-list-item>
-            <md-button ng-href="#!/settings">Ustawienia konta</md-button>
+            <md-button ng-href="#!/calendar" ng-class="{'active-link': activePage === 'calendar'}">Terminarz</md-button>
         </md-list-item>
     </md-list>
     <md-list ng-if="user.username == null">
-        <md-list-item>
+        <md-list-item ng-show="activePage !='home'">
+            <md-button ng-href="#!/home">Strona główna</md-button>
+        </md-list-item>
+        <md-list-item ng-class="{'active-link': activePage === 'login'}">
             <md-button ng-href="#!/login">Zaloguj</md-button>
         </md-list-item>
         <md-list-item>
-            <md-button ng-href="#!/register">Zarejestruj</md-button>
+            <md-button ng-href="#!/register"
+                ng-class="{'active-link': activePage === 'register'}">Zarejestruj</md-button>
         </md-list-item>
     </md-list>
 </md-sidenav>

@@ -1,5 +1,0 @@
-{
-    "require": {
-        "laminas/laminas-mvc": "^3.7"
-    }
-}

@@ -1,4 +1,4 @@
-# FIXME: poprawić dockerfile(nie instaluje zaleznosci)
+# FIXME: poprawić dockerfile(nie instaluje zaleznosci npm i composer)
 # TODO: dodac do dockera git clone
 
 # Używamy obrazu PHP z Apache

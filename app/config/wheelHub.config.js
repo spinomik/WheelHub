@@ -2,12 +2,12 @@ wheelHubApp.config([
 	'$routeProvider',
 	function ($routeProvider) {
 		$routeProvider
-			.when('/homePage', {
+			.when('/home', {
 				templateUrl: '/views/homePage.html',
 				controller: 'HomePageController',
 			})
-			.when('/carsList', {
-				templateUrl: '/views/carsList.html',
+			.when('/cars-list', {
+				templateUrl: '/views/carsListPage.html',
 				controller: 'CarsListController',
 			})
 			.when('/settings', {
@@ -22,8 +22,20 @@ wheelHubApp.config([
 				templateUrl: '/views/registerPage.html',
 				controller: 'RegisterController',
 			})
+			.when('/calendar', {
+				templateUrl: '/views/calendarPage.html',
+				controller: 'CalendarController',
+			})
+			.when('/my-rents', {
+				templateUrl: '/views/myRentsPage.html',
+				controller: 'MyRentsController',
+			})
+			.when('/rent-car', {
+				templateUrl: '/views/rentCarPage.html',
+				controller: 'RentCarController',
+			})
 			.otherwise({
-				redirectTo: '/homePage',
+				redirectTo: '/home',
 			})
 	},
 ])

@@ -13,7 +13,11 @@
 <body ng-controller="WheelHubController" layout="column">
     <div flex>
         <toolbar show-sidenav="showSidenav"></toolbar>
-        <container show-sidenav="showSidenav" user="user"></container>
+        <container
+            show-sidenav="showSidenav"
+            active-page="activePage"
+            user="user">
+        </container>
     </div>
 </body>
 

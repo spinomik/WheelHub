@@ -21,7 +21,7 @@ WheelsHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzo
 
     ```
 
-2.  Wykonaj mpm i w katalogu app
+2.  Wykonaj mpm i oraz coposer install w katalogu app
 
 3.  Zbuduj i uruchom kontenery Docker:
 

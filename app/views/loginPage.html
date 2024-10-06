@@ -1,1 +1,26 @@
-<h1>Zaloguj się!</h1>
+<!-- TODO: Poprawić wygląd  -->
+<!-- TODO: Dodac komunikaty o blednym hasle i loginie  -->
+<!-- TODO: Dodac Reset hasła  -->
+<div layout="column" layout-align="center center">
+    <md-card>
+        <md-card-title>
+            <h2 class="md-headline">Logowanie</h2>
+        </md-card-title>
+        <md-card-content>
+            <form name="loginForm" ng-submit="login()">
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input type="email" ng-model="user.email" required>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Hasło</label>
+                    <input type="password" ng-model="user.password" required>
+                </md-input-container>
+
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="loginForm.$invalid">Zaloguj
+                    się</md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</div>
