@@ -9,6 +9,12 @@
         </md-card-title>
         <md-card-content>
             <form name="registerForm" ng-submit="register()">
+
+                <md-input-container class="md-block">
+                    <label>Login</label>
+                    <input type="text" ng-model="user.login" required>
+                </md-input-container>
+
                 <md-input-container class="md-block">
                     <label>Imię</label>
                     <input type="text" ng-model="user.firstName" required>

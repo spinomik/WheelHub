@@ -1,6 +1,8 @@
 services:
-  app:
-    build: ./app
+  frontend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
     container_name: wheelshub_app
     ports:
       - '8080:80'
@@ -9,10 +11,22 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      - dataBase
 
-  db:
-    image: mysql:8.0
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: wheelshub_api
+    ports:
+      - '8000:80'
+    volumes:
+      - ./api:/var/www/html
+    depends_on:
+      - dataBase
+
+  dataBase:
+    image: mysql:8.3
     container_name: wheelshub_db
     env_file:
       - .env

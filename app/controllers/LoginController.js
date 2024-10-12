@@ -4,15 +4,13 @@ wheelHubApp.controller('LoginController', [
 	'AuthService',
 	'$location',
 	function ($scope, AuthService, $location) {
+		$scope.user = {}
 		$scope.login = function () {
-			AuthService.login($scope.username, $scope.password).then(
-				function () {
-					$location.path('/home')
-				},
-				function (error) {
-					$scope.errorMessage = 'Niepoprawne dane logowania'
-				}
-			)
+			AuthService
+			login($scope.user.username, $scope.user.password).then(function (success) {
+				if (success) $location.path('/home')
+				$location.path('/login')
+			})
 		}
 	},
 ])

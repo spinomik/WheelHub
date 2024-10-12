@@ -2,7 +2,7 @@
 # TODO: dodac do dockera git clone
 
 # Używamy obrazu PHP z Apache
-FROM php:8.1-apache
+FROM php:8.3-apache
 
 # Instalacja potrzebnych rozszerzeń PHP i narzędzi
 RUN apt-get update && apt-get install -y \
@@ -21,20 +21,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Przypisujemy folder roboczy
 WORKDIR /var/www/html
 
-# Instalacja Laminas
-RUN composer create-project laminas/laminas-mvc-skeleton .
-
 # Kopiowanie aplikacji do kontenera
 COPY . /var/www/html
-
-# Przypisujemy folder roboczy
-WORKDIR /var/www/html/app
-
-# Zainstaluj zależności z package.json
-RUN npm install
-
-# Przypisujemy folder roboczy
-WORKDIR /var/www/html
 
 # Kopiowanie konfiguracji Apache
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf

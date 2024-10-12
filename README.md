@@ -34,6 +34,15 @@ WheelsHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzo
 5.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
 
     Struktura projektu
-    • app/ – Aplikacja i backend (AngularJS, PHP, Laminas)
+    • app/ – Frontend i (AngularJS, AngularJS Material)
+    • api/ - backend PHP, Laminas
     • db/ – Baza danych (MySQL)
     • docker-compose.yml – Konfiguracja Docker
+
+w celu debugowania mozna uzyc loggera:
+
+use WheelHubApi\Service\Logger;
+
+(new Logger())->log($variable);
+
+zostanie utworzony plik w katalogu WheelHubApi/src/Service/logs.txt

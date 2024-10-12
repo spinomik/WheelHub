@@ -3,29 +3,40 @@ wheelHubApp.service('AuthService', [
 	'$window',
 	function ($http, $window) {
 		this.user = null
+		this.message = ''
+		this.apiUrl = 'http://wheelhub.api.localhost:8000/api/'
 
-		// check user is Login
 		this.isLoggedIn = function () {
 			return !!$window.localStorage.getItem('token')
 		}
 
-		// Login user
 		this.login = function (username, password) {
-			console.log(this.user)
-			return $http.post('/api/login', { username: username, password: password }).then(function (response) {
-				// save token in sesion
-				$window.localStorage.setItem('token', response.data.token)
-				this.user = response.data.user
-			})
+			return $http
+				.post(this.apiUrl + 'login', {
+					username: username,
+					password: password,
+				})
+				.then(function (response) {
+					if (response.status === 200) {
+						$window.localStorage.setItem('token', response.data.token)
+						this.message = response.data.message
+						console.log(this.message)
+
+						return true
+					} else {
+						this.message = response.data.message
+						console.log(this.message)
+
+						return false
+					}
+				})
 		}
 
-		// Logout user
 		this.logout = function () {
 			$window.localStorage.removeItem('token')
 			this.user = null
 		}
 
-		// register user
 		this.register = function (username, password) {
 			return $http.post('/api/register', { username: username, password: password })
 		}
