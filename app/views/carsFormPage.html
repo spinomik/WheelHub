@@ -1,0 +1,53 @@
+<div layout="column" layout-align="center center">
+    <h2>{{title}}</h2>
+
+    <form name="carForm" ng-submit="addCar(car)" novalidate>
+
+        <md-input-container class="md-block">
+            <label>Marka pojazdu</label>
+            <md-select ng-model="car.carBrandId" ng-change="loadModels(car.carBrandId)" required>
+                <md-option ng-repeat="brand in carBrands | orderBy:'name'" value="{{brand.id}}">
+                    {{brand.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Model pojazdu</label>
+            <md-select ng-model="car.carModelId" ng-disabled="!car.carBrandId" required>
+                <md-option ng-repeat="model in carModels | orderBy:'name'" value="{{model.id}}">
+                    {{model.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Numer VIN</label>
+            <input type="text" ng-model="car.vin" ng-blur="onVinBlur()" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Numer Rejestracyjny</label>
+            <input type="text" ng-model="car.registerNumber" ng-blur="onRegisterNumberBlur()" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Przebieg</label>
+            <input type="number" ng-model="car.millage" required>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Kolor</label>
+            <input type="text" ng-model="car.color" required>
+        </md-input-container>
+
+        <md-checkbox ng-model="car.available">
+            Dostępny
+        </md-checkbox>
+
+        <md-button class="md-raised md-primary" type="submit">
+            {{submitText}}
+        </md-button>
+
+    </form>
+</div>

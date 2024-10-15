@@ -1,0 +1,24 @@
+<div layout="column" layout-padding>
+    <h1>Szczegóły pojazdu</h1>
+
+    <md-card>
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title">{{ car.brandName }} {{ car.modelName }}</span>
+                <span class="md-subhead">{{ car.registerNumber | uppercase }}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+            <img ng-src="{{ car.img }}" alt="Zdjęcie pojazdu" style="width: 100%; height: auto; border-radius: 4px;">
+            <p><strong>Kolor:</strong> {{ car.color }}</p>
+            <p><strong>VIN:</strong> {{ car.vin | uppercase }}</p>
+            <p><strong>Status:</strong> {{ car.available ? 'Aktywny' : 'Nieaktywny' }}</p>
+            <p><strong>Przebieg:</strong> {{ car.mileage | number }} km</p>
+            <p><strong>Aktywnie wypożyczający:</strong> {{ car.rentId ? car.rentId : 'Brak' }}</p>
+            <md-card-subtitle><strong>Lokalizacja: </strong></md-card-subtitle>
+            <p>{{car.positionLongitude}}, {{car.positionLatitude}}</p>
+        </md-card-content>
+    </md-card>
+
+    <md-button class="md-raised" ng-href="#!/cars-list" style="margin-top: 20px;">Powrót do listy</md-button>
+</div>

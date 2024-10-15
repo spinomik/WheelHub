@@ -1,8 +1,8 @@
-# WheelsHub
+# WheelHub
 
 ## Opis projektu
 
-WheelsHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzona przy użyciu AngularJS oraz Laminas. Aplikacja pozwala użytkownikom na przeglądanie dostępnych pojazdów oraz ich wypożyczanie.
+WheelHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzona przy użyciu AngularJS oraz Laminas. Aplikacja pozwala użytkownikom na przeglądanie dostępnych pojazdów oraz ich wypożyczanie.
 
 ## Technologie
 
@@ -29,9 +29,19 @@ WheelsHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzo
         docker-compose up --build
     ```
 
-4.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
+4.  zaktualizuj dane bazydanych w pliku api/config/autoload/global.php
+    z pliku .env
+    ```
+        'db' => [
+            'driver'         => 'Pdo',
+            'dsn'            => 'mysql:dbname=[MYSQL_DATABASE];host=[container_name]',
+            'username'       => 'root',
+            'password'       => '[MYSQL_ROOT_PASSWORD]',
+        ]
+    ```
+5.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
 
-5.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
+6.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
 
     Struktura projektu
     • app/ – Frontend i (AngularJS, AngularJS Material)

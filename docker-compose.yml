@@ -3,7 +3,7 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    container_name: wheelshub_app
+    container_name: wheelHub_app
     ports:
       - '8080:80'
     volumes:
@@ -17,7 +17,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: wheelshub_api
+    container_name: wheelHub_api
     ports:
       - '8000:80'
     volumes:
@@ -27,7 +27,7 @@ services:
 
   dataBase:
     image: mysql:8.3
-    container_name: wheelshub_db
+    container_name: wheelHub_db
     env_file:
       - .env
     ports:
@@ -41,7 +41,7 @@ services:
       - db_data:/var/lib/mysql
 
 networks:
-  wheelshub_network:
+  wheelHub_network:
     driver: bridge
 
 volumes:

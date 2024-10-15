@@ -50,3 +50,13 @@ body {
 .toolbar h1 span {
 	color: #1b1b1b !important;
 }
+
+/* CarList */
+
+md-switch.md-checked {
+	color: green; /* Zielony, gdy aktywny */
+}
+
+md-switch:not(.md-checked) {
+	color: red; /* Czerwony, gdy nieaktywny */
+}

@@ -30,16 +30,6 @@ return [
                         'action'     => 'index',
                     ],
                 ],
-            ],
-            'login' => [
-                'type' => Segment::class,
-                'options' => [
-                    'route' => '/api/login',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action' => 'login',
-                    ]
-                ]
             ]
         ],
     ],

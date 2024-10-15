@@ -6,6 +6,18 @@ wheelHubApp.config([
 				templateUrl: '/views/homePage.html',
 				controller: 'HomePageController',
 			})
+			.when('/cars-list/add', {
+				templateUrl: '/views/carsFormPage.html',
+				controller: 'CarsFormController',
+			})
+			.when('/cars-list/edit/:carId', {
+				templateUrl: '/views/carsFormPage.html',
+				controller: 'CarsFormController',
+			})
+			.when('/cars-list/detail/:carId', {
+				templateUrl: '/views/carsDetailPage.html',
+				controller: 'CarsDetailController',
+			})
 			.when('/cars-list', {
 				templateUrl: '/views/carsListPage.html',
 				controller: 'CarsListController',

@@ -20,6 +20,9 @@ $scripts = [
     '/controllers/CalendarController.js',
     '/controllers/MyRentsController.js',
     '/controllers/RentCarController.js',
+    '/controllers/CarsFormController.js',
+    '/controllers/CarsDetailController.js',
+
     // Services
     'services/AuthServices.js',
     // Components

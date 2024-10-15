@@ -15,7 +15,7 @@
 return [
     'db' => [
         'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=wheelsHub_db;host=wheelshub_db',
+        'dsn'            => 'mysql:dbname=wheelHub_db;host=wheelHub_db',
         'username'       => 'root',
         'password'       => '123Frytki',
     ],

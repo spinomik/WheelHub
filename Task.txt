@@ -25,7 +25,8 @@ Widoki frontu:
 2. Formularz dodawania pojazdu:
     - podstawowe walidacje z komunikatami
     - adres jako komponent lub dyrektywa
-3. Formularz edycji pojazdu - ten sam formularz co przy dodawaniu
+3. Formularz edycji pojazdu 
+    - ten sam formularz co przy dodawaniu
 
 Backend: 
     - PHP Framework:
