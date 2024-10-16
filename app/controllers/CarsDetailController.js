@@ -13,7 +13,6 @@ wheelHubApp.controller('CarsDetailController', [
 				.then(function (response) {
 					if (response.data && response.data.status === 'success') {
 						$scope.car = response.data.data
-						console.log(response.data.data)
 					} else {
 						console.error('Error fetching car details:', response.data.message)
 					}

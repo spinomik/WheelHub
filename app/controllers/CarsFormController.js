@@ -28,7 +28,6 @@ wheelHubApp.controller('CarsFormController', [
 		}
 		$scope.addCar = function (car) {
 			if ($routeParams.carId) {
-				console.log(car)
 				$http.post(API_URL + 'car/update-car', car).then(
 					function (response) {
 						if (response.data.status === 'success') {

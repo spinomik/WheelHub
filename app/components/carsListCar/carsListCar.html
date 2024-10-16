@@ -1,0 +1,32 @@
+<md-list-item class="md-3-line">
+    <img ng-src="{{car.img}}" class="md-avatar" alt="opis zdjecia">
+    <div class="md-list-item-text" layout="column">
+        <h3>{{ car.brandName }} {{ car.modelName }}</h3>
+        <h4>{{ car.registerNumber | uppercase }}</h4>
+        <p>{{ car.vin | uppercase }}</p>
+    </div>
+    <md-switch ng-model="car.available" ng-disabled="true" ng-checked="car.available" aria-label="Aktywny">
+        {{car.available ? 'Aktywny' : 'Nieaktywny'}}
+    </md-switch>
+    <md-switch ng-disabled="true" ng-checked="!car.rentId" aria-label="dostępność">
+        {{ car.rentId == null || car.rentId == false ? 'Dostępny' : 'Niedostępny' }}
+    </md-switch>
+    <md-menu class="md-secondary">
+        <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open car menu">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </md-button>
+        <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+            <md-menu-item>
+                <md-button ng-href="#!/cars-list/detail/{{ car.id }}">Zobacz</md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-href="#!/cars-list/edit/{{ car.id }}">Edytuj</md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ng-click="onDelete({ carId: car.id })">Usuń</md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <md-divider></md-divider>
+</md-list-item>

@@ -30,6 +30,7 @@ $scripts = [
     '/components/content/content.directive.js',
     '/components/sidenav/sidenav.directive.js',
     '/components/toolbar/toolbar.directive.js',
+    '/components/carsListCar/carsListCar.directive.js',
 ];
 
 foreach ($scripts as $script) {
