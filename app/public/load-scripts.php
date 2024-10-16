@@ -31,6 +31,7 @@ $scripts = [
     '/components/sidenav/sidenav.directive.js',
     '/components/toolbar/toolbar.directive.js',
     '/components/carsListCar/carsListCar.directive.js',
+    '/components/loadingCircular/loadingCircular.directive.js',
 ];
 
 foreach ($scripts as $script) {

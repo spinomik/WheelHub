@@ -12,19 +12,27 @@ wheelHubApp.controller('CarsFormController', [
 		$scope.registerNumberExists = false
 		$scope.title = 'Dodaj nowy Pojazd'
 		$scope.submitText = 'Dodaj Pojazd'
-		if ($routeParams.carId) {
-			$scope.title = 'Edytuj Pojazd'
-			$scope.submitText = 'Zapisz Pojazd'
-			$http.get(API_URL + 'car/get-car/' + $routeParams.carId).then(
-				function (response) {
-					$scope.loadModels(response.data.data.carBrandId)
-					$scope.car = response.data.data
-					$scope.formatUppercase()
-				},
-				function (error) {
-					console.error('Error fetching car details:', error)
-				}
-			)
+		$scope.status = 'loading'
+		$scope.loadForm = function () {
+			$scope.loadBrands()
+			if ($routeParams.carId) {
+				$scope.title = 'Edytuj Pojazd'
+				$scope.submitText = 'Zapisz Pojazd'
+				$http.get(API_URL + 'car/get-car/' + $routeParams.carId).then(
+					function (response) {
+						$scope.loadModels(response.data.data.carBrandId)
+						$scope.car = response.data.data
+						$scope.formatUppercase()
+						$scope.status = 'success'
+					},
+					function (error) {
+						console.error('Error fetching car details:', error)
+						$scope.status = 'error'
+					}
+				)
+			} else {
+				$scope.status = 'success'
+			}
 		}
 		$scope.addCar = function (car) {
 			if ($routeParams.carId) {
@@ -123,6 +131,6 @@ wheelHubApp.controller('CarsFormController', [
 				$scope.car.registerNumber = $scope.car.registerNumber.toUpperCase()
 			}
 		}
-		$scope.loadBrands()
+		$scope.loadForm()
 	},
 ])
