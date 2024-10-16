@@ -12,7 +12,7 @@
 
 <body ng-controller="WheelHubController" layout="column">
     <div flex>
-        <toolbar show-sidenav="showSidenav"></toolbar>
+        <toolbar class="toolbar" show-sidenav="showSidenav"></toolbar>
         <container
             show-sidenav="showSidenav"
             active-page="activePage"

@@ -4,14 +4,23 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+/* Toolbar */
+.toolbar {
+	height: 10vh;
+}
+
+/* Container */
 .container {
 	background-image: url('/img/background.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 100vh;
+	height: 90vh;
 	width: 100%;
 }
+
+/* Content */
 .content {
 	min-height: 100%;
 	backdrop-filter: blur(7px);
@@ -23,8 +32,8 @@ body {
 .userCard {
 	background-color: alpha;
 	box-shadow: 0px 1px 3px 0px #ffa31a, 0px 1px 1px 0px #ffa31a, 0px 2px 1px -1px #ffa31a;
-	/* box-shadow: 2px 2px 2px 2px #ffa31a; */
 }
+
 /* SideNav */
 .md-sidenav-4dp {
 	backdrop-filter: blur(7px);
@@ -54,9 +63,27 @@ body {
 /* CarList */
 
 md-switch.md-checked {
-	color: green; /* Zielony, gdy aktywny */
+	color: green;
 }
 
 md-switch:not(.md-checked) {
-	color: red; /* Czerwony, gdy nieaktywny */
+	color: red;
+}
+
+/* pasek Przewijania */
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #ffa31a;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #e68a00;
 }
