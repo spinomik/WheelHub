@@ -19,7 +19,7 @@ api/module/WheelHubApi/src/logs.txt
 
 
 # DataBase
-.env
+# .env
 
 # Inne
 .DS_Store

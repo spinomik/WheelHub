@@ -29,8 +29,11 @@ WheelHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzon
         docker-compose up --build
     ```
 
-4.  zaktualizuj dane bazydanych w pliku api/config/autoload/global.php
+4.  utwórz plik .env i zaktualizuj dane bazydanych w pliku api/config/autoload/global.php
     z pliku .env
+
+    api/config/autoload/global.php
+
     ```
         'db' => [
             'driver'         => 'Pdo',
@@ -38,7 +41,12 @@ WheelHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzon
             'username'       => 'root',
             'password'       => '[MYSQL_ROOT_PASSWORD]',
         ]
+
+
     ```
+
+    wykonaj w mySql skrypty /db/scripts/create_tables.sql ,/db/scripts/insert_data.sql
+
 5.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
 
 6.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080
