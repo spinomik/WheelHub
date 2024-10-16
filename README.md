@@ -45,8 +45,6 @@ WheelHub to aplikacja webowa do zarządzania wypożyczalnią pojazdów, stworzon
 
     ```
 
-    wykonaj w mySql skrypty /db/scripts/create_tables.sql ,/db/scripts/insert_data.sql
-
 5.  dodaj vhosty na swoim komputerze "127.0.0.1 wheelhub.localhost"
 
 6.  aplikacja powinna być dostępna pod http://wheelhub.localhost:8080

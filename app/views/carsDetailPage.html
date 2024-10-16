@@ -13,7 +13,7 @@
             <p><strong>Kolor:</strong> {{ car.color }}</p>
             <p><strong>VIN:</strong> {{ car.vin | uppercase }}</p>
             <p><strong>Status:</strong> {{ car.available ? 'Aktywny' : 'Nieaktywny' }}</p>
-            <p><strong>Przebieg:</strong> {{ car.mileage | number }} km</p>
+            <p><strong>Przebieg:</strong> {{ car.millage | number }} km</p>
             <p><strong>Aktywnie wypożyczający:</strong> {{ car.rentId ? car.rentId : 'Brak' }}</p>
             <md-card-subtitle><strong>Lokalizacja: </strong></md-card-subtitle>
             <p>{{car.positionLongitude}}, {{car.positionLatitude}}</p>

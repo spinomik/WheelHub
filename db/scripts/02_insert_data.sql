@@ -1,6 +1,5 @@
--- INSERTS 
 USE wheelHub_db;
---Marki 
+
 INSERT INTO car_brands (name, created_at, updated_at) VALUES
     ('Toyota', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Honda', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -23,7 +22,6 @@ INSERT INTO car_brands (name, created_at, updated_at) VALUES
     ('Jaguar', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Tesla', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
---MODELE
 INSERT INTO car_models (id, name, brand_id, created_at, updated_at) VALUES
     (1, 'Camry', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (2, 'Corolla', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
@@ -66,7 +64,6 @@ INSERT INTO car_models (id, name, brand_id, created_at, updated_at) VALUES
     (39, 'Model S', 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (40, 'Model 3', 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
     
--- Samochody 
 INSERT INTO cars (car_model_id, vin, register_number, available, rent_id, position_latitude, position_longitude, millage, color, img) VALUES 
 (2, 'w660487647LnGisi', 'jt19489', TRUE, NULL, 27.17209511, -139.00071176, 19811, 'maroon', './favicon.png'),
 (3, 'J578156593ECHqdZ', 'NF80160', TRUE, NULL, -65.56953415, -40.81104323, 215647, 'aqua', './favicon.png'),

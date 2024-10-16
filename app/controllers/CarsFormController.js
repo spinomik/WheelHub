@@ -33,7 +33,7 @@ wheelHubApp.controller('CarsFormController', [
 					function (response) {
 						if (response.data.status === 'success') {
 							alert('Samochód zaktualizowany!')
-							$location.path('/#!/cars-list')
+							$location.path('#!/cars-list')
 						} else {
 							alert('Błąd podczas edycji samochodu!')
 						}
@@ -51,7 +51,7 @@ wheelHubApp.controller('CarsFormController', [
 						if (addAnother) {
 							$scope.car = {}
 						} else {
-							$location.path('/#!/cars-list')
+							$location.path('#!/cars-list')
 						}
 						$scope.car = {}
 					} else {

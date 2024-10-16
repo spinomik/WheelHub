@@ -26,7 +26,7 @@ services:
       - dataBase
 
   dataBase:
-    image: mysql:8.3
+    image: mysql:latest
     container_name: wheelHub_db
     env_file:
       - .env
@@ -39,6 +39,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+      - ./db/scripts:/docker-entrypoint-initdb.d
 
 networks:
   wheelHub_network:

@@ -1,5 +1,5 @@
 # Używamy oficjalnego obrazu MySQL
-FROM mysql:8.0
+FROM mysql:latest
 
 # Ustawiamy domyślne zmienne środowiskowe
 ENV MYSQL_DATABASE=wheel_db
