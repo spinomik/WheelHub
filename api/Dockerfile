@@ -10,8 +10,7 @@ LABEL maintainer="getlaminas.org" \
 RUN apt-get update
 
 ## Configure Apache
-RUN a2enmod rewrite \
-    && mv /var/www/html /var/www/public
+RUN a2enmod rewrite 
 
 # Copy Configure Apache file
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
@@ -77,4 +76,4 @@ RUN docker-php-ext-install pdo_mysql
 #     && docker-php-ext-enable redis
 
 
-WORKDIR /var/www
+WORKDIR /var/www/html

@@ -9,8 +9,6 @@ app/node_modules/
 # Backend
 api/vendor/
 api/config/development.config.php
-api/data/cache/*
-api/data/cache/.gitkeep
 api/phpunit.xml
 .phpcs-cache
 .phpunit.cache

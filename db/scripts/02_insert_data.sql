@@ -1,5 +1,3 @@
-USE wheelHub_db;
-
 INSERT INTO car_brands (name, created_at, updated_at) VALUES
     ('Toyota', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Honda', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
