@@ -21,9 +21,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Przypisujemy folder roboczy
 WORKDIR /var/www/html
 
-# Kopiowanie aplikacji do kontenera
-COPY . /var/www/html
-
 # Kopiowanie konfiguracji Apache
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
