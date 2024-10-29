@@ -14,10 +14,10 @@ api/phpunit.xml
 .phpunit.cache
 .psalm-cache
 api/module/WheelHubApi/src/logs.txt
-
+api/config/autoload/global.php
 
 # DataBase
-# .env
+.env
 
 # Inne
 .DS_Store

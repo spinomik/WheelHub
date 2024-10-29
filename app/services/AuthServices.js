@@ -1,10 +1,10 @@
 wheelHubApp.service('AuthService', [
+	'API_URL',
 	'$http',
 	'$window',
-	function ($http, $window) {
+	function (API_URL, $http, $window) {
 		this.user = null
 		this.message = ''
-		this.apiUrl = 'http://wheelhub.api.localhost:8000/api/'
 
 		this.isLoggedIn = function () {
 			return !!$window.localStorage.getItem('token')
@@ -12,33 +12,35 @@ wheelHubApp.service('AuthService', [
 
 		this.login = function (username, password) {
 			return $http
-				.post(this.apiUrl + 'login', {
+				.post(API_URL + 'login', {
 					username: username,
 					password: password,
 				})
-				.then(function (response) {
-					if (response.status === 200) {
-						$window.localStorage.setItem('token', response.data.token)
+				.then(response => {
+					if (response.data.code === 200) {
+						$window.localStorage.setItem('token', response.data.data.token)
+						$window.localStorage.setItem(
+							'user',
+							JSON.stringify(response.data.data)
+						)
 						this.message = response.data.message
-						console.log(this.message)
-
-						return true
+						return { success: response.data.access, message: this.message }
 					} else {
 						this.message = response.data.message
-						console.log(this.message)
-
-						return false
+						return { success: response.data.access, message: this.message }
 					}
 				})
 		}
 
-		this.logout = function () {
-			$window.localStorage.removeItem('token')
-			this.user = null
+		this.getUser = function () {
+			const user = $window.localStorage.getItem('user')
+			return user ? JSON.parse(user) : null
 		}
 
-		this.register = function (username, password) {
-			return $http.post('/api/register', { username: username, password: password })
+		this.logout = function () {
+			$window.localStorage.removeItem('token')
+			$window.localStorage.removeItem('user')
+			this.user = null
 		}
 	},
 ])

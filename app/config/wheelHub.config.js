@@ -30,6 +30,15 @@ wheelHubApp.config([
 				templateUrl: '/views/loginPage.html',
 				controller: 'LoginController',
 			})
+			.when('/logout', {
+				templateUrl: '/views/loginPage.html',
+				controller: 'LoginController',
+				resolve: {
+					logout: function (AuthService) {
+						AuthService.logout()
+					},
+				},
+			})
 			.when('/register', {
 				templateUrl: '/views/registerPage.html',
 				controller: 'RegisterController',

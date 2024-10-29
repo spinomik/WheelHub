@@ -23,59 +23,80 @@ class LoginController extends AbstractActionController
 
     private $table;
     private $key = "4e75589ba6a23e0aab722a95604e72e86e2a7bf1f78d89851080253649138d97";
+    protected $request;
+
 
     public function __construct(UserTable $table)
     {
         $this->table = $table;
+        $this->request = $this->getRequest();
     }
 
     public function loginAction(): JsonModel
     {
-        $post = json_decode($this->getRequest()->getContent(), true);
-        $postLogin = $post['username'] ?? null;
-        $postPassword = $post['password'] ?? null;
-        $user = $this->table->getUser($postLogin, 'username');
+        $data = json_decode($this->request->getContent(), true);
 
-        $status = match (true) {
-            !$postLogin || !$postPassword => $this->createErrorResponse(400, 'Login or password not provided'),
-            !$user || $postPassword !== $user->password => $this->createErrorResponse(401, 'Invalid login or password'),
-            !$user->active => $this->createErrorResponse(403, 'User blocked or account inactive'),
-            default => null,
-        };
+        if (empty($data['username']) || empty($data['password']))
+            return new JsonModel([
+                'status'   => 'error',
+                'code'     => 400,
+                'access'   => false,
+                'message'  => 'Login or password not provided',
+                'data'     => null,
+            ]);
 
-        if ($status !== null) {
-            return $status;
+        $username = $data['username'];
+        $password = $data['password'];
+        $user = $this->table->getUser($username, 'username');
+
+        if (empty($user))
+            return new JsonModel([
+                'status'   => 'error',
+                'code'     => 404,
+                'access'   => false,
+                'message'  => 'Username not found',
+                'data'     => null,
+            ]);
+
+        if (! $user->getActive() || ! $user->getVerified()) {
+            return new JsonModel([
+                'status'   => 'error',
+                'code'     => 401,
+                'access'   => false,
+                'message'  => 'User is Blocked',
+                'data'     => null,
+            ]);
         }
 
-        $this->table->updateUser(
-            [
-                'last_login' => (new \DateTime())->format('Y-m-d H:i:s')
-            ],
-            "id = '$user->id'"
-        );
-        if (!empty($user)) {
+        if (
+            password_verify($password, $user->getPassword())
+            && $user->getActive() && $user->getVerified()
+        ) {
             return new JsonModel([
                 'status'   => 'success',
                 'code'     => 200,
                 'access'   => true,
-                'message'  => 'User logged in successfully',
-                'token'    => $this->generateToken($user),
-                'user'    => $user->username,
+                'message'  => 'User found successfully',
+                'data'     => [
+                    "username" => $user->getUsername(),
+                    "firstName" => $user->getFirstName(),
+                    "lastName" => $user->getLastName(),
+                    "token" => $this->generateToken($user),
+                    "userRole" => 1 //Tymczasowo przypisywanie roli admina
+                ],
+            ]);
+        } else {
+            return new JsonModel([
+                'status'   => 'error',
+                'code'     => 401,
+                'access'   => false,
+                'message'  => 'Bad Password',
+                'data'     => null,
             ]);
         }
     }
 
-    private function createErrorResponse(int $code, string $message): JsonModel
-    {
-        return new JsonModel([
-            'status'  => 'error',
-            'code'    => $code,
-            'access'  => false,
-            'message' => $message,
-        ]);
-    }
-
-    public function generateToken(User $user): string
+    private function generateToken(User $user): string
     {
         $payload = [
             'iss' => "http://wheelhub.api.localhost",
@@ -84,8 +105,8 @@ class LoginController extends AbstractActionController
             'nbf' => time(),
             'exp' => time() + (60 * 60 * 3),
             'data' => [
-                'userId' => $user->id,
-                'username' => $user->username
+                'userId' => $user->getId(),
+                'username' => $user->getUsername()
             ]
         ];
 

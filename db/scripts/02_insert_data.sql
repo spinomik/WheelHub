@@ -97,5 +97,5 @@ INSERT INTO cars (car_model_id, vin, register_number, available, rent_id, positi
 INSERT INTO users (
     username, password, last_login, user_config_id, first_name, last_name, email, gender, role_id, address_id, verified, active, driver_licence_number, driver_licence_date
     ) VALUES (
-        'janNowak', '123frytki', '2024-10-08', 1, 'Jan', 'Nowak', 'janNowak@gmail.com', 1, 1, 1, true, true, 'PNF123DDR342E', '2030-01-01'
+        'janNowak', '$2y$10$fam4lWDGN1J0pOjKVXbLFejmWuhoM.hUzQGYDq7ZbuLTTW.NPWKWu', '2024-10-08', 1, 'Jan', 'Nowak', 'janNowak@gmail.com', 1, 1, 1, true, true, 'PNF123DDR342E', '2030-01-01'
 );

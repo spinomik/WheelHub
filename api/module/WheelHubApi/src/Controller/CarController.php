@@ -88,7 +88,7 @@ class CarController extends AbstractActionController
 
         return new JsonModel([
             'status' => 'success',
-            'code' => 200,
+            'code' => 201,
             'message' => "Car added successfully, new Car Id: {$id}",
             'data' => $car->toArray()
         ]);
@@ -114,6 +114,7 @@ class CarController extends AbstractActionController
 
         return new JsonModel([
             'status' => 'success',
+            'code' => 201,
             'message' => "Car updated successfully, new Car Id: $id",
             'id' => $id
         ]);
@@ -125,6 +126,7 @@ class CarController extends AbstractActionController
         $data = json_decode($request->getContent(), true);
         return new JsonModel([
             'status' => 'success',
+            'code' => 201,
             'message' => "Car updated successfully"
         ]);
     }
@@ -138,11 +140,13 @@ class CarController extends AbstractActionController
         if ($this->table->carExists($vin, $registerNumber)) {
             return new JsonModel([
                 'exists' => true,
+                'code' => 200,
                 'message' => 'The car with the given VIN or registration number already exists.'
             ]);
         } else {
             return new JsonModel([
                 'exists' => false,
+                'code' => 404,
                 'message' => 'The car does not exist in the database.'
             ]);
         }

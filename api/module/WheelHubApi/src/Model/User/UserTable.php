@@ -2,74 +2,39 @@
 
 namespace WheelHubApi\Model\User;
 
-use RuntimeException;
-use Laminas\Db\TableGateway\TableGatewayInterface;
+use Laminas\Db\Adapter\AdapterInterface;
+use Laminas\Db\Sql\Sql;
 
 class UserTable
 {
-    private $tableGateway;
+    private $adapter;
 
-    public function __construct(TableGatewayInterface $tableGateway)
+    public function __construct(AdapterInterface $adapter)
     {
-        $this->tableGateway = $tableGateway;
+        $this->adapter = $adapter;
     }
 
-    public function getAll()
-    {
-        return $this->tableGateway->select();
-    }
+    public function getAll() {}
 
-    public function getUser(string $value, string $fieldName = 'id'): User|null
+    public function getUser(string $value, string $fieldName = 'users.id')
     {
-        $rowset = $this->tableGateway->select([$fieldName => $value]);
-        $row = $rowset->current();
-        return $row;
-    }
-    public function updateUser(array $set, string $where): int
-    {
-        return $this->tableGateway->update($set, $where);
-    }
+        $sql = new Sql($this->adapter);
+        $select = $sql->select();
+        $select->from('users')
+            ->where([$fieldName => $value]);
 
-    public function saveUser(User $user)
-    {
-        $data = [
-            'username' => $user->username,
-            'password' => $user->password,
-            'last_login' => $user->lastLogin,
-            'user_config_id' => $user->userConfigId,
-            'first_name' => $user->firstName,
-            'last_name' => $user->lastName,
-            'email' => $user->email,
-            'gender' => $user->gender,
-            'role_id' => $user->roleId,
-            'address_id' => $user->addressId,
-            'verified' => $user->verified,
-            'active' => $user->active,
-            'driver_licence_number' => $user->driverLicenceNumber,
-            'driver_licence_date' => $user->driverLicenceDate,
-        ];
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $resultSet = $statement->execute();
 
-        $id = (int) $user->id;
-
-        if ($id === 0) {
-            $this->tableGateway->insert($data);
-            return;
+        if ($resultSet->isQueryResult() && $resultSet->getAffectedRows() > 0) {
+            $row = $resultSet->current();
+            return User::fromRow($row);
         }
 
-        try {
-            $this->getUser($id);
-        } catch (RuntimeException $e) {
-            throw new RuntimeException(sprintf(
-                'Cannot update user with identifier %d; does not exist',
-                $id
-            ));
-        }
-
-        $this->tableGateway->update($data, ['id' => $id]);
+        return null;
     }
 
-    public function deleteUser($id)
-    {
-        $this->tableGateway->delete(['id' => (int) $id]);
-    }
+    public function updateUser() {}
+    public function saveUser() {}
+    public function deleteUser() {}
 }

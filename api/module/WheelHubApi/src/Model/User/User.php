@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace WheelHubApi\Model\User;
 
-class User
+use WheelHubApi\Model\BaseModel;
+
+class User extends BaseModel
 {
     private $id;
     private $username;
@@ -24,28 +26,60 @@ class User
     private $createdAt;
     private $updatedAt;
 
-    public function exchangeArray(array $data): void
+    public function toArray(bool $toSnakeCase = false): array
     {
-        $this->id = !empty($data['id']) ? $data['id'] : null;
-        $this->username = !empty($data['username']) ? $data['username'] : null;
-        $this->password = !empty($data['password']) ? $data['password'] : null;
-        $this->lastLogin = !empty($data['last_login']) ? $data['last_login'] : null;
-        $this->userConfigId = !empty($data['user_config_id']) ? $data['user_config_id'] : null;
-        $this->firstName = !empty($data['first_name']) ? $data['first_name'] : null;
-        $this->lastName = !empty($data['last_name']) ? $data['last_name'] : null;
-        $this->email = !empty($data['email']) ? $data['email'] : null;
-        $this->gender = !empty($data['gender']) ? $data['gender'] : null;
-        $this->roleId = !empty($data['role_id']) ? $data['role_id'] : null;
-        $this->addressId = !empty($data['address_id']) ? $data['address_id'] : null;
-        $this->verified = !empty($data['verified']) ? $data['verified'] : null;
-        $this->active = !empty($data['active']) ? $data['active'] : null;
-        $this->driverLicenceNumber = !empty($data['driver_licence_number']) ? $data['driver_licence_number'] : null;
-        $this->driverLicenceDate = !empty($data['driver_licence_date']) ? $data['driver_licence_date'] : null;
-        $this->createdAt = !empty($data['created_at']) ? $data['created_at'] : null;
-        $this->updatedAt = !empty($data['updated_at']) ? $data['updated_at'] : null;
+        $data = [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'password' => $this->getPassword(),
+            'lastLogin' => $this->getLastLogin(),
+            'userConfigId' => $this->getUserConfigId(),
+            'firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
+            'email' => $this->getEmail(),
+            'gender' => $this->getGender(),
+            'roleId' => $this->getRoleId(),
+            'addressId' => $this->getAddressId(),
+            'verified' => $this->getVerified(),
+            'active' => $this->getActive(),
+            'driverLicenceNumber' => $this->getDriverLicenceNumber(),
+            'driverLicenceDate' => $this->getDriverLicenceDate(),
+            'createdAt' => $this->getCreatedAt(),
+            'updatedAt' => $this->getUpdatedAt(),
+        ];
+
+        return $toSnakeCase ? $this->mapKeysToSnakeCase($data) : $data;
     }
 
-    // Gettery
+    public static function fromRow(array $row, bool $toSnakeCase = false): self
+    {
+        $user = new self();
+        if ($toSnakeCase) {
+            $row = self::mapKeysToSnakeCase($row);
+        }
+
+        $user->setId($row['id'] ?? null);
+        $user->setUsername($row['username'] ?? null);
+        $user->setPassword($row['password'] ?? null);
+        $user->setLastLogin($row['last_login'] ?? null);
+        $user->setUserConfigId($row['user_config_id'] ?? null);
+        $user->setFirstName($row['first_name'] ?? null);
+        $user->setLastName($row['last_name'] ?? null);
+        $user->setEmail($row['email'] ?? null);
+        $user->setGender($row['gender'] ?? null);
+        $user->setRoleId($row['role_id'] ?? null);
+        $user->setAddressId($row['address_id'] ?? null);
+        $user->setVerified(empty($row['verified']) ? false : true);
+        $user->setActive(empty($row['active']) ? false : true);
+        $user->setDriverLicenceNumber($row['driver_licence_number'] ?? null);
+        $user->setDriverLicenceDate($row['driver_licence_date'] ?? null);
+        $user->setCreatedAt($row['created_at'] ?? null);
+        $user->setUpdatedAt($row['updated_at'] ?? null);
+
+        return $user;
+    }
+
+    // Getters and setters
     public function getId(): ?int
     {
         return $this->id;
@@ -172,7 +206,7 @@ class User
         $this->email = $email;
     }
 
-    public function setGender(?string $gender): void
+    public function setGender(?int $gender): void
     {
         $this->gender = $gender;
     }
